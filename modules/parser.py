@@ -15,7 +15,7 @@ import argparse
 import textwrap
 
 # Local imports
-from modules.version import __version__
+from modules.variables import __version__
 
 
 def make_parser():
