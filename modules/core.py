@@ -28,8 +28,11 @@ def read_file(name):
         with open(name) as file:
             lines = file.readlines()
     except FileNotFoundError:
-        print('File Missing: {name}')
-        return
+        print(f'File missing: {name}')
+        exit(1)
+    except PermissionError:
+        print(f'Permissions missing for file: {name}')
+        exit(1)
     else:
         return list(map(lambda x: x.strip('\n'), lines))
 
@@ -42,9 +45,20 @@ def write_file(name, lines):
         with open(name, 'x') as file:
             file.writelines(lines)
     except FileExistsError:
-        os.rename(name, f'{name}.ust.backup {datetime.datetime.today()}')
-        with open(name, 'w') as file:
-            file.writelines(lines)
+        try:
+            os.rename(name, f'{name}.ust.backup {datetime.datetime.today()}')
+            with open(name, 'w') as file:
+                file.writelines(lines)
+        except PermissionError:
+            print(f'Permissions missing for file: {name}')
+            exit(1)
+        else:
+            return True
+    except PermissionError:
+        print(f'Permissions missing for file: {name}')
+        exit(1)
+    else:
+        return True
 
 
 if __name__ == '__main__':

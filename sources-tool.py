@@ -27,5 +27,6 @@ if __name__ == '__main__':
     #     commands = make_parser()
     #     print(commands.parse_args())
     src_lst = read_file('/etc/apt/sources.list')
-    print(src_lst)
+    # print(src_lst)
     write_file('./sources.list', src_lst)
+    # write_file('/etc/apt/sources.list', src_lst)

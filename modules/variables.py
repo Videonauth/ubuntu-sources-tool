@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*-
 # ---------------------------------------------------------------------------
-# ubuntu-sources-tool - version.py
+# ubuntu-sources-tool - variables.py
 # ---------------------------------------------------------------------------
 # Author: Videonauth <videonauth@googlemail.com>
 # License: MIT (see LICENSE file)
