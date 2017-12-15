@@ -1,3 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 .idea/
 .misc/
+modules/__pycache__/
+/sources.list
+/sources.list.ust.backup*
