@@ -17,16 +17,12 @@ from modules.core import is_root,\
                          read_file,\
                          write_file
 
-from modules.parser import make_parser,\
-                           sanitize_input
+from modules.parser import parser
 
 if __name__ == '__main__':
-    # if not is_root():
-    #     print('E: Missing privileges! Are you root?')
-    # else:
-    #     commands = make_parser()
-    #     print(commands.parse_args())
-    src_lst = read_file('/etc/apt/sources.list')
-    # print(src_lst)
-    write_file('./sources.list', src_lst)
-    # write_file('/etc/apt/sources.list', src_lst)
+    commands = parser()
+    commands = vars(commands.parse_args())
+    print(f'M: {commands}')
+    if not commands.get('command') == 'none':
+        print(f'M: {commands.get("command")}')
+        pass
