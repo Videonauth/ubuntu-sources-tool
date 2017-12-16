@@ -10,8 +10,17 @@
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
 
-# Variables
+# Version string
 __version__ = '0.0.3'
+
+# DEBUG-OPTIONS
+DEBUG = True
+DEBUG_ALL = 8
+DEBUG_WARN = 4
+DEBUG_ERROR = 2
+DEBUG_CRITICAL = 1
+DEBUG_NONE = 0
+DEBUG_LEVEL = DEBUG_ALL
 
 if __name__ == '__main__':
     pass

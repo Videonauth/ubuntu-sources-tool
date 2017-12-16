@@ -11,18 +11,25 @@
 # ---------------------------------------------------------------------------
 
 # External imports
+import sys
 
 # Local imports
-from modules.core import is_root,\
-                         read_file,\
-                         write_file
-
-from modules.parser import parser
+from modules.core import *
+from modules.parser import *
 
 if __name__ == '__main__':
     commands = parser()
     commands = vars(commands.parse_args())
-    print(f'M: {commands}')
+    debug(textwrap.dedent(f'\
+            M: {sys.argv[0]}\n\
+            V: commands={commands}'
+            ),
+          DEBUG_ALL
+          )
     if not commands.get('command') == 'none':
-        print(f'M: {commands.get("command")}')
-        pass
+        debug(textwrap.dedent(f'\
+                M: {sys.argv[0]}\n\
+                V: commands.get(\'command\')={commands.get("command")}'
+                ),
+              DEBUG_ALL
+              )
