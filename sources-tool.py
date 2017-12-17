@@ -23,6 +23,7 @@ from modules.parser import *
 # Local variables
 _time = time.time()
 _path = os.path.dirname(os.path.realpath(__file__))
+_file = 'sources-tool.py'
 
 if __name__ == '__main__':
     # Create an argparse parser object and uses it to fetch command-line options in a directory.
@@ -38,10 +39,10 @@ if __name__ == '__main__':
 
     # Check if 'default.conf' exists and if yes read it, if not use default from variables and write file.
     _settings = default_settings
-    if file_exists('./default.conf'):
-        _settings.update(file_to_dict('./default.conf'))
+    if file_exists(f'{_path}/config/default.conf'):
+        _settings.update(file_to_dict(f'{_path}/config/default.conf'))
     else:
-        dict_to_file(_settings, './default.conf')
+        dict_to_file(_settings, f'{_path}/config/default.conf')
 
     # Reached the end of the file exiting.
     print(f'Process finished after {time.time() - _time} seconds.')
