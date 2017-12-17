@@ -41,8 +41,8 @@ if __name__ == '__main__':
     _settings = default_settings
     if file_exists(f'{_path}/config/default.conf'):
         _settings.update(file_to_dict(f'{_path}/config/default.conf'))
-    else:
-        dict_to_file(_settings, f'{_path}/config/default.conf')
+    # else:
+    #     dict_to_file(_settings, f'{_path}/config/default.conf')
 
     # Reached the end of the file exiting.
     print(f'Process finished after {time.time() - _time} seconds.')
