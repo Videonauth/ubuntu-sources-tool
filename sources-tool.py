@@ -10,42 +10,40 @@
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
 
+"""Tool for maintaining sources.list files (analyzing, repairing, changing)"""
+
 # External imports
-from sys import argv
+import time
 
 # Local imports
+from modules.variables import *
 from modules.core import *
 from modules.parser import *
 
 # Local variables
-MODULE_NAME = 'sources-tool.py'
+_time = time.time()
+_path = os.path.dirname(os.path.realpath(__file__))
 
 if __name__ == '__main__':
-    # Make protected _parser object and output a dictionary containing
+    # Create an argparse parser object and uses it to fetch command-line options in a directory.
     _parser = parser()
-    commands = vars(_parser.parse_args())
-    if is_all_none(commands):
+    _commands = vars(_parser.parse_args())
+
+    # Check command-line options if any are given, if not exit out.
+    if dict_is_all_none(_commands):
         _parser.print_usage()
+        print(f'Process finished after {time.time() - _time} seconds.')
+        print(f'Process finished with exit code 0.')
         exit(0)
-    print(os.path.exists(argv[0]))
-    print(argv[0])
-    # commands.pop('command')
-    # commands.update({'command': ['test']})
-    # print(commands)
-    # if is_all_none(commands):
-    #     print(_parser.print_usage())
-    #     exit(0)
-    # debug(textwrap.dedent(f'\
-    #         M: {MODULE_NAME}\n\
-    #         V: commands={commands}'
-    #                       ),
-    #       debugdb.get('DEBUG_ALL')
-    #       )
-    # if not commands.get('command') == 'none':
-    #     debug(textwrap.dedent(f'\
-    #             M: {MODULE_NAME}\n\
-    #             V: commands.get(\'command\')={commands.get("command")}'
-    #             ),
-    #           debugdb.get('DEBUG_ALL')
-    #           )
-    #     is_root()
+
+    # Check if 'default.conf' exists and if yes read it, if not use default from variables and write file.
+    _settings = default_settings
+    if file_exists('./default.conf'):
+        _settings.update(file_to_dict('./default.conf'))
+    else:
+        dict_to_file(_settings, './default.conf')
+
+    # Reached the end of the file exiting.
+    print(f'Process finished after {time.time() - _time} seconds.')
+    print(f'Process finished with exit code 0.')
+    exit(0)

@@ -14,15 +14,18 @@
 __version__ = '0.0.3'
 
 # DEBUG-OPTIONS
-debugdb = {'DEBUG': True,
-           'DEBUG_ALL': 8,
-           'DEBUG_WARN': 4,
-           'DEBUG_ERROR': 2,
-           'DEBUG_CRITICAL': 1,
-           'DEBUG_NONE': 0,
-           'DEBUG_LEVEL': 8
-           }
-
+default_settings = dict(
+    DEBUG=True,
+    DEBUG_MSG=dict(
+                   NONE=0,
+                   CRITICAL=1,
+                   ERROR=2,
+                   WARN=3,
+                   ALL=4,
+                   VAR=5
+                   ),
+    DEBUG_LEVEL=5
+)
 settings = {'log_file': 'none',
             'log_level': 'none'
             }

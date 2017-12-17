@@ -27,41 +27,41 @@ def parser():
     )
     output.add_argument('-b', '--blueprint',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the input file for operation.')
     output.add_argument('-c', '--command',
                         type=str,
-                        default='none',
+                        default=None,
                         help='pass command to sources-tool.',
                         nargs='+')
     output.add_argument('-d', '--debug',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the input file for operation.')
     output.add_argument('-i', '--in-file',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the input file for operation.')
     output.add_argument('-l', '--log-file',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the log file for operation.')
     output.add_argument('-L', '--log-level',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the log file for operation.')
     output.add_argument('-o', '--out-file',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the output file for operation.')
     output.add_argument('-r', '--regex-op',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the output file for operation.',
                         nargs='+')
     output.add_argument('-V', '--verbose',
                         type=str,
-                        default='none',
+                        default=None,
                         help='define the output file for operation.')
     output.add_argument("-v", "--version", action="version", version="%(prog)s "+__version__)
     return output

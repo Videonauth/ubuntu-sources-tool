@@ -2,5 +2,8 @@
 .idea/
 .misc/
 modules/__pycache__/
+/test.asc
+/test.asc.backup*
 /sources.list
-/sources.list.ust.backup*
+/sources.list.backup*
+/default.conf
