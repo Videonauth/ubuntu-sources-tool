@@ -14,13 +14,18 @@
 __version__ = '0.0.3'
 
 # DEBUG-OPTIONS
-DEBUG = True
-DEBUG_ALL = 8
-DEBUG_WARN = 4
-DEBUG_ERROR = 2
-DEBUG_CRITICAL = 1
-DEBUG_NONE = 0
-DEBUG_LEVEL = DEBUG_ALL
+debugdb = {'DEBUG': True,
+           'DEBUG_ALL': 8,
+           'DEBUG_WARN': 4,
+           'DEBUG_ERROR': 2,
+           'DEBUG_CRITICAL': 1,
+           'DEBUG_NONE': 0,
+           'DEBUG_LEVEL': 8
+           }
+
+settings = {'log_file': 'none',
+            'log_level': 'none'
+            }
 
 if __name__ == '__main__':
     pass

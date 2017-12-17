@@ -25,11 +25,19 @@ def parser():
             """),
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
+    output.add_argument('-b', '--blueprint',
+                        type=str,
+                        default='none',
+                        help='define the input file for operation.')
     output.add_argument('-c', '--command',
                         type=str,
                         default='none',
                         help='pass command to sources-tool.',
                         nargs='+')
+    output.add_argument('-d', '--debug',
+                        type=str,
+                        default='none',
+                        help='define the input file for operation.')
     output.add_argument('-i', '--in-file',
                         type=str,
                         default='none',

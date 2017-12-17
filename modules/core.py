@@ -13,9 +13,13 @@
 # External imports
 import os
 import datetime
+# import textwrap
 
 # Local imports
-from modules.variables import *
+from modules.variables import debugdb
+
+# Local variables
+MODULE_NAME = 'modules/core.py'
 
 
 def debug(message, level):
@@ -25,30 +29,30 @@ def debug(message, level):
     :param level: integer value to be challenged by DEBUG_LEVEL
     :returns None:
     """
-    if DEBUG:
-        if level <= DEBUG_LEVEL:
+    if debugdb.get('DEBUG'):
+        if level <= debugdb.get('DEBUG_LEVEL'):
             _date = datetime.datetime.today()
-            if level == DEBUG_ALL:
+            if level == debugdb.get('DEBUG_ALL'):
                 _level = 'DEBUG_ALL'
-            if level == DEBUG_WARN:
+            if level == debugdb.get('DEBUG_WARN'):
                 _level = 'DEBUG_WARN'
-            if level == DEBUG_ERROR:
+            if level == debugdb.get('DEBUG_ERROR'):
                 _level = 'DEBUG_ERROR'
-            if level == DEBUG_CRITICAL:
+            if level == debugdb.get('DEBUG_CRITICAL'):
                 _level = 'DEBUG_CRITICAL'
-            if level == DEBUG_NONE:
+            if level == debugdb.get('DEBUG_NONE'):
                 _level = 'DEBUG_NONE'
-            if DEBUG_LEVEL == DEBUG_ALL:
+            if debugdb.get('DEBUG_LEVEL') == debugdb.get('DEBUG_ALL'):
                 _Level = 'DEBUG_ALL'
-            if DEBUG_LEVEL == DEBUG_WARN:
+            if debugdb.get('DEBUG_LEVEL') == debugdb.get('DEBUG_WARN'):
                 _Level = 'DEBUG_WARN'
-            if DEBUG_LEVEL == DEBUG_ERROR:
+            if debugdb.get('DEBUG_LEVEL') == debugdb.get('DEBUG_ERROR'):
                 _Level = 'DEBUG_ERROR'
-            if DEBUG_LEVEL == DEBUG_CRITICAL:
+            if debugdb.get('DEBUG_LEVEL') == debugdb.get('DEBUG_CRITICAL'):
                 _Level = 'DEBUG_CRITICAL'
-            if DEBUG_LEVEL == DEBUG_NONE:
+            if debugdb.get('DEBUG_LEVEL') == debugdb.get('DEBUG_NONE'):
                 _Level = 'DEBUG_NONE'
-            output = f'T: {_date}\nD: [{level}]: {_level} [{DEBUG_LEVEL}]: {_Level}\n{message}'
+            output = f'{_date}\nD: [{level}]: {_level} [{debugdb.get("DEBUG_LEVEL")}]: {_Level}\n{message}'
             print(output)
             return
         else:
@@ -57,17 +61,69 @@ def debug(message, level):
         return
 
 
+def is_all_none(dictionary):
+    """Test if all entries in dictionary have the value 'none'
+
+    :param dictionary: command line parameters as a dictionary
+    :returns boolean: True if all entries in dictionary are 'none'
+
+    :debug DISABLED
+    """
+    for x, y in dictionary.items():
+        # debug(textwrap.dedent(f'\
+        #         M: {MODULE_NAME}\n\
+        #         F: is_all_none()\n\
+        #         V: x={x}\n\
+        #         V: y={y}'
+        #                       ),
+        #       debugdb.get('DEBUG_ALL')
+        #       )
+        if not y == 'none':
+            # debug(textwrap.dedent(f'\
+            #         M: {MODULE_NAME}\n\
+            #         F: is_all_none()\n\
+            #         O: in KEY x={x}, VALUE for y={y} is not "none". Returning False'
+            #                       ),
+            #       debugdb.get('DEBUG_ALL')
+            #       )
+            return False
+    # debug(textwrap.dedent(f'\
+    #         M: {MODULE_NAME}\n\
+    #         F: is_all_none()\n\
+    #         O: all VALUE are "none". Returning True'
+    #                       ),
+    #       debugdb.get('DEBUG_ALL')
+    #       )
+    return True
+
+
 def is_root():
     """Check if the UID of the user running the script is 0 (i.e. root)
 
     :param None:
     :returns boolean: True or False depending if the UID using the script is 0:root
+
+    :debug DISABLED
     """
     if os.getuid() is 0:
-        debug(f'D: ALL :F {self.__name__}', DEBUG_ALL)
+        # debug(textwrap.dedent(f'\
+        #         M: {MODULE_NAME}\n\
+        #         F: is_root()\n\
+        #         V: os.getuid()={os.getuid()}\n\
+        #         O: UID == 0 returning True'
+        #                       ),
+        #       debugdb.get('DEBUG_ALL')
+        #       )
         return True
     else:
-        debug(f'', DEBUG_ALL)
+        # debug(textwrap.dedent(f'\
+        #         M: {MODULE_NAME}\n\
+        #         F: is_root()\n\
+        #         V: os.getuid()={os.getuid()}\n\
+        #         O: UID != 0 returning False'
+        #                       ),
+        #       debugdb.get('DEBUG_ALL')
+        #       )
         return False
 
 
