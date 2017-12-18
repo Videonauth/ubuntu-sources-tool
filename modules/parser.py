@@ -49,7 +49,7 @@ def parser():
     output.add_argument('-L', '--log-level',
                         type=str,
                         default=None,
-                        help='define the log file for operation.')
+                        help='define the log level for operation.')
     output.add_argument('-o', '--out-file',
                         type=str,
                         default=None,
@@ -57,12 +57,12 @@ def parser():
     output.add_argument('-r', '--regex-op',
                         type=str,
                         default=None,
-                        help='define the output file for operation.',
+                        help='define regex operation.',
                         nargs='+')
     output.add_argument('-V', '--verbose',
                         type=str,
                         default=None,
-                        help='define the output file for operation.')
+                        help='define verbosity of sources-tool.')
     output.add_argument("-v", "--version", action="version", version="%(prog)s "+__version__)
     return output
 
