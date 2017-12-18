@@ -17,12 +17,9 @@ import time
 import os
 
 # Local imports
-from modules.variables import default_blueprints,\
-                              default_constants,\
+from modules.variables import default_blueprints, default_constants,\
                               default_settings
-from modules.core import dict_is_all_none,\
-                         file_to_dict,\
-                         list_to_file,\
+from modules.core import dict_is_all_none, file_to_dict, list_to_file,\
                          file_exists
 from modules.parser import parser
 
@@ -48,11 +45,10 @@ if __name__ == '__main__':
         print(f'Process finished with exit code 0.')
         exit(0)
 
-    # Check if 'default.conf' exists and if yes read it, if not
-    # use default from variables and write file. The situation
-    # of a missing default.conf file should not happen leaving
-    # the function in for the rare occurrence of the user
-    # deleting the file, then writing a new one
+    # Check if 'default.conf' exists and if yes read it, if not use default
+    # from variables and write file. The situation of a missing default.conf
+    # file should not happen leaving the function in for the rare occurrence
+    # of the user deleting the file, then writing a new one
     # from _blueprints.get('default_conf')
     if file_exists(f'{_path}/config/default.conf'):
         _settings.update(file_to_dict(f'{_path}/config/default.conf'))
