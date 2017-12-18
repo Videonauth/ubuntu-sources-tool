@@ -11,11 +11,10 @@
 # ---------------------------------------------------------------------------
 
 # Version string
-__version__ = '0.0.3'
+__version__ = '0.0.4'
 
-# DEBUG-OPTIONS
-default_settings = dict(
-    DEBUG=True,
+# Program defaults
+default_constants = dict(
     DEBUG_MSG=dict(
                    NONE=0,
                    CRITICAL=1,
@@ -24,11 +23,20 @@ default_settings = dict(
                    ALL=4,
                    VAR=5
                    ),
+)
+
+default_settings = dict(
+    DEBUG=True,
     DEBUG_LEVEL=5
 )
-settings = {'log_file': 'none',
-            'log_level': 'none'
-            }
+
+default_blueprints = dict(
+    default_conf=list(f'# config/default.conf file written from default blueprints',
+                      f'# version {__version__}',
+                      f'DEBUG={eval(default_settings.get("DEBUG"))}',
+                      f'DEBUG_LEVEL={eval(default_settings.get("DEBUG_LEVEL"))}'
+                      ),
+)
 
 if __name__ == '__main__':
     pass
