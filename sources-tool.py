@@ -10,23 +10,41 @@
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
 
+"""Tool for maintaining sources.list files (analyzing, repairing, changing)"""
+
 # External imports
+import time
 
 # Local imports
-from modules.core import is_root,\
-                         read_file,\
-                         write_file
+from modules.variables import *
+from modules.core import *
+from modules.parser import *
 
-from modules.parser import make_parser,\
-                           sanitize_input
+# Local variables
+_time = time.time()
+_path = os.path.dirname(os.path.realpath(__file__))
+_file = 'sources-tool.py'
 
 if __name__ == '__main__':
-    # if not is_root():
-    #     print('E: Missing privileges! Are you root?')
+    # Create an argparse parser object and uses it to fetch command-line options in a directory.
+    _parser = parser()
+    _commands = vars(_parser.parse_args())
+
+    # Check command-line options if any are given, if not exit out.
+    if dict_is_all_none(_commands):
+        _parser.print_usage()
+        print(f'Process finished after {time.time() - _time} seconds.')
+        print(f'Process finished with exit code 0.')
+        exit(0)
+
+    # Check if 'default.conf' exists and if yes read it, if not use default from variables and write file.
+    _settings = default_settings
+    if file_exists(f'{_path}/config/default.conf'):
+        _settings.update(file_to_dict(f'{_path}/config/default.conf'))
     # else:
-    #     commands = make_parser()
-    #     print(commands.parse_args())
-    src_lst = read_file('/etc/apt/sources.list')
-    # print(src_lst)
-    write_file('./sources.list', src_lst)
-    # write_file('/etc/apt/sources.list', src_lst)
+    #     dict_to_file(_settings, f'{_path}/config/default.conf')
+
+    # Reached the end of the file exiting.
+    print(f'Process finished after {time.time() - _time} seconds.')
+    print(f'Process finished with exit code 0.')
+    exit(0)

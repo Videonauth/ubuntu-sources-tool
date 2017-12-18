@@ -10,8 +10,25 @@
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
 
-# Variables
-__version__ = '0.0.1'
+# Version string
+__version__ = '0.0.3'
+
+# DEBUG-OPTIONS
+default_settings = dict(
+    DEBUG=True,
+    DEBUG_MSG=dict(
+                   NONE=0,
+                   CRITICAL=1,
+                   ERROR=2,
+                   WARN=3,
+                   ALL=4,
+                   VAR=5
+                   ),
+    DEBUG_LEVEL=5
+)
+settings = {'log_file': 'none',
+            'log_level': 'none'
+            }
 
 if __name__ == '__main__':
     pass
