@@ -30,7 +30,7 @@ if __name__ == '__main__':
     _parser = parser()
     _commands = vars(_parser.parse_args())
 
-    # Check command-line options if any are given, if not exit out.
+    # Check command-line options if any are given, if not print usage and exit out.
     if dict_is_all_none(_commands):
         _parser.print_usage()
         print(f'Process finished after {time.time() - _time} seconds.')
