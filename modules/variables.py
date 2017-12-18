@@ -31,11 +31,12 @@ default_settings = dict(
 )
 
 default_blueprints = dict(
-    default_conf=list(f'# config/default.conf file written from default blueprints',
-                      f'# version {__version__}',
-                      f'DEBUG={eval(default_settings.get("DEBUG"))}',
-                      f'DEBUG_LEVEL={eval(default_settings.get("DEBUG_LEVEL"))}'
-                      ),
+    default_conf=list([
+                       f'# config/default.conf file written from default blueprints',
+                       f'# version {__version__}',
+                       f'DEBUG={default_settings.get("DEBUG")}',
+                       f'DEBUG_LEVEL={default_settings.get("DEBUG_LEVEL")}'
+                      ]),
 )
 
 if __name__ == '__main__':
