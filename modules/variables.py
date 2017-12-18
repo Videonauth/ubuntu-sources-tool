@@ -34,7 +34,8 @@ default_settings = dict(
 
 default_blueprints = dict(
     default_conf=list([
-                       f'# config/default.conf file written from default_blueprints',
+                       f'# config/default.conf file written \
+                       from default_blueprints',
                        f'# version {__version__}',
                        f'DEBUG={default_settings.get("DEBUG")}',
                        f'DEBUG_LEVEL={default_settings.get("DEBUG_LEVEL")}'
