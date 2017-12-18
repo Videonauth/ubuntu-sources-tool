@@ -76,7 +76,9 @@ def list_to_dict(list_item, delimiter='='):
     _output = dict()
     for _line in list_item:
         if not _line[0] == '#':
-            _output.update({_line.split(delimiter)[0]: eval(_line.split(delimiter)[1])})
+            _output.update(
+                {_line.split(delimiter)[0]: eval(_line.split(delimiter)[1])}
+            )
     return _output
 
 

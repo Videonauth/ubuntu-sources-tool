@@ -21,7 +21,8 @@ from modules.variables import __version__
 def parser():
     output = argparse.ArgumentParser(
         description=textwrap.dedent("""\
-            Tool for maintaining, creating, repairing and analyzing sources.list files
+            Tool for maintaining, creating, repairing and analyzing
+            sources.list files
             """),
         formatter_class=argparse.RawDescriptionHelpFormatter
     )
@@ -63,7 +64,9 @@ def parser():
                         type=str,
                         default=None,
                         help='define verbosity of sources-tool.')
-    output.add_argument("-v", "--version", action="version", version="%(prog)s "+__version__)
+    output.add_argument("-v", "--version",
+                        action="version",
+                        version="%(prog)s "+__version__)
     return output
 
 
