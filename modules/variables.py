@@ -27,7 +27,9 @@ default_constants = dict(
 
 default_settings = dict(
     DEBUG=False,
-    DEBUG_LEVEL=0
+    DEBUG_LEVEL=0,
+    LOG=False,
+    LOG_LEVEL=0
 )
 
 default_blueprints = dict(
