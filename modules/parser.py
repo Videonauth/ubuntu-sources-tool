@@ -28,7 +28,7 @@ def parser():
     output.add_argument('-b', '--blueprint',
                         type=str,
                         default=None,
-                        help='define the input file for operation.')
+                        help='define a blueprint for the command operation.')
     output.add_argument('-c', '--command',
                         type=str,
                         default=None,
@@ -37,7 +37,7 @@ def parser():
     output.add_argument('-d', '--debug',
                         type=str,
                         default=None,
-                        help='define the input file for operation.')
+                        help='define the debug options for sources-tool.')
     output.add_argument('-i', '--in-file',
                         type=str,
                         default=None,
