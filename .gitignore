@@ -1,6 +1,6 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea/
-/.misc/
+/.idea/*
 /modules/__pycache__/
 /test.asc
 /test.asc.backup*
