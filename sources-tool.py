@@ -48,15 +48,17 @@ if __name__ == '__main__':
         print(f'Process finished with exit code 0.')
         exit(0)
 
-    # Check if 'default.conf' exists and if yes read it, if not use default from
-    # variables and write file. The situation of a missing default.conf file
-    # should not happen leaving the function in for the rare occurrence of
-    # the user deleting the file, then writing a new one
+    # Check if 'default.conf' exists and if yes read it, if not
+    # use default from variables and write file. The situation
+    # of a missing default.conf file should not happen leaving
+    # the function in for the rare occurrence of the user
+    # deleting the file, then writing a new one
     # from _blueprints.get('default_conf')
     if file_exists(f'{_path}/config/default.conf'):
         _settings.update(file_to_dict(f'{_path}/config/default.conf'))
     else:
-        list_to_file(_blueprints.get('default_conf'), f'{_path}/config/default.conf')
+        list_to_file(_blueprints.get('default_conf'),
+                     f'{_path}/config/default.conf')
 
     # Reached the end of the file exiting.
     print(f'Process finished after {time.time() - _time} seconds.')
