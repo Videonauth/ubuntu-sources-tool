@@ -11,7 +11,7 @@
 # ---------------------------------------------------------------------------
 
 # Version string
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 
 # Program defaults
 default_constants = dict(
