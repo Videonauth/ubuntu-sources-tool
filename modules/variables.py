@@ -16,13 +16,13 @@ __version__ = '0.0.6'
 # Program defaults
 default_constants = dict(
     DEBUG_MSG=dict(
-                   NONE=0,
-                   CRITICAL=1,
-                   ERROR=2,
-                   WARN=3,
-                   ALL=4,
-                   VAR=5
-                   ),
+        NONE=0,
+        CRITICAL=1,
+        ERROR=2,
+        WARN=3,
+        ALL=4,
+        VAR=5
+    ),
 )
 
 default_settings = dict(
@@ -34,12 +34,11 @@ default_settings = dict(
 
 default_blueprints = dict(
     default_conf=list([
-                       f'# config/default.conf file written \
-                       from default_blueprints',
-                       f'# version {__version__}',
-                       f'DEBUG={default_settings.get("DEBUG")}',
-                       f'DEBUG_LEVEL={default_settings.get("DEBUG_LEVEL")}'
-                      ]),
+        f'# config/default.conf file written from default_blueprints',
+        f'# version {__version__}',
+        f'DEBUG={default_settings.get("DEBUG")}',
+        f'DEBUG_LEVEL={default_settings.get("DEBUG_LEVEL")}'
+    ]),
 )
 
 if __name__ == '__main__':
