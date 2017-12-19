@@ -13,12 +13,13 @@
 # External imports
 import os
 import datetime
-# import textwrap
+import stat
 
 # Local imports
 
 # Local variables
-MODULE_NAME = 'modules/core.py'
+_path = os.path.dirname(os.path.realpath(__file__))
+_file = 'sources-tool.py'
 
 
 def strip_newline(lines):
@@ -113,11 +114,20 @@ def dict_to_file(dictionary_item, name):
     list_to_file(dict_to_list(dictionary_item), name)
 
 
-def is_root():
+def i_am_root():
     if os.getuid() is 0:
         return True
     else:
         return False
+
+
+def who_am_i():
+    return os.getuid()
+
+
+def get_file_permissions(name):
+    # TODO: parse the permissions to a proper format
+    return stat.filemode(os.stat(name).st_mode)
 
 
 if __name__ == '__main__':
