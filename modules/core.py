@@ -16,7 +16,6 @@ import datetime
 # import textwrap
 
 # Local imports
-# from modules.variables import debug_settings
 
 # Local variables
 MODULE_NAME = 'modules/core.py'
