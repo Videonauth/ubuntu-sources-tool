@@ -2,6 +2,6 @@ language: python
 python:
   - "3.6"
 install:
-  - pip3 install -r requirements.txt --upgrade
+  - pip3 install -r travis_requirements.txt --upgrade
 script:
   - flake8 --max-line-length=120 ./
