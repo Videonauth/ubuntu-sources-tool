@@ -10,7 +10,9 @@
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
 
-from modules.variables import __version__, default_settings
+from modules.variables import \
+    __version__,\
+    default_settings
 
 default_blueprints = dict(
     default_conf=list([
