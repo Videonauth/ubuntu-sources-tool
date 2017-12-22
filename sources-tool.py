@@ -17,7 +17,8 @@ import time
 import os
 
 # Local imports
-from modules.variables import default_blueprints, default_constants, default_settings
+from modules.variables import default_constants, default_settings
+from modules.blueprints import default_blueprints
 from modules.core import dict_is_all_none, file_to_dict, list_to_file, file_exists
 from modules.parser import parser
 
