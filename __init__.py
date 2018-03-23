@@ -9,3 +9,8 @@
 # Purpose: -
 # Written for: Python 3.6.3
 # ---------------------------------------------------------------------------
+from sources_tool import codename
+
+if __name__ == "__main__":
+    print(codename)
+    pass

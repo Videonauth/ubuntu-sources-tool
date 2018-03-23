@@ -14,12 +14,9 @@
 import os
 import datetime
 import stat
+import time
 
 # Local imports
-
-# Local variables
-_path = os.path.dirname(os.path.realpath(__file__))
-_file = 'sources-tool.py'
 
 
 def strip_newline(lines):
@@ -28,6 +25,25 @@ def strip_newline(lines):
 
 def append_newline(lines):
     return list(map(lambda x: f'{x}\n', lines))
+
+
+def end_program(start_time, reason, stop_time):
+    print(f'Process finished after {stop_time - start_time} seconds.')
+    print(f'Process finished with exit code {reason}.')
+    exit(reason)
+
+
+def strip_quotes_from_dict(dictionary_item):
+    _output = dict()
+    delimiter = '\"'
+    for _key, _value in dictionary_item.items():
+        _output.update({_key: _value.strip(delimiter)})
+    _tmp = _output
+    _output = dict()
+    delimiter = '\''
+    for _key, _value in _tmp.items():
+        _output.update({_key: _value.strip(delimiter)})
+    return _output
 
 
 def dict_to_list(dictionary_item, delimiter='='):
@@ -60,8 +76,8 @@ def dict_is_all_none(dictionary_item):
 
 def file_to_list(name):
     try:
-        with open(name) as _file:
-            _lines = _file.readlines()
+        with open(name) as _infile:
+            _lines = _infile.readlines()
     except PermissionError as error:
         print(f'{datetime.datetime.today()} {error}')
         exit(1)
@@ -76,8 +92,20 @@ def list_to_dict(list_item, delimiter='='):
     _output = dict()
     for _line in list_item:
         if not _line[0] == '#':
-            _output.update({_line.split(delimiter)[0]: eval(_line.split(delimiter)[1])})
+            _output.update({_line.split(delimiter)[0]: _line.split(delimiter)[1]})
     return _output
+
+
+def dict_to_stdout(dictionary_item):
+    for _key, _value in dictionary_item.items():
+        print(f'{_key}: {_value}')
+    return True
+
+
+def list_to_stdout(list_item):
+    for _line in list_item:
+        print(f'{_line}')
+    return True
 
 
 def file_exists(name):
@@ -89,6 +117,7 @@ def file_to_dict(name):
 
 
 def list_to_file(list_item, name):
+    _time = time.time()
     list_item = append_newline(list_item)
     try:
         with open(name, 'x') as file:
@@ -100,12 +129,12 @@ def list_to_file(list_item, name):
                 file.writelines(list_item)
         except PermissionError:
             print(f'Permissions missing for file: {name}')
-            exit(1)
+            end_program(_time, 1, time.time())
         else:
             return True
     except PermissionError:
         print(f'Permissions missing for file: {name}')
-        exit(1)
+        end_program(_time, 1, time.time())
     else:
         return True
 
